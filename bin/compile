@@ -237,7 +237,7 @@ curl -L https://github.com/DataDog/dd-trace-php/archive/v0.2.5.tar.gz | tar -xz 
 /app/.heroku/php/bin/phpize # generate files needed to build PHP extension
 ./configure --with-php-config=/app/.heroku/php/bin/php-config
 make
-sudo make install
+make install
 
 curl_retry_on_18 --fail --silent --location -o $build_dir/.heroku/composer.tar.gz "${s3_url}composer-1.8.0.tar.gz" || {
 	mcount "failures.bootstrap.download.composer"

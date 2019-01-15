@@ -230,8 +230,14 @@ curl_retry_on_18 --fail --silent --location -o $build_dir/.heroku/php.tar.gz "${
 tar xzf $build_dir/.heroku/php.tar.gz -C $build_dir/.heroku/php
 rm $build_dir/.heroku/php.tar.gz
 
-# Install datadog tracer agent through pecl
-pecl install datadog_trace-beta
+# Compile and nstall datadog tracer agent
+mkdir $build_dir/dd-trace
+cd $build_dir/dd-tracedd-trace
+curl -L https://github.com/DataDog/dd-trace-php/archive/v0.2.5.tar.gz | tar x --strip-components=1
+phpize # generate files needed to build PHP extension
+./configure
+make
+sudo make install
 
 curl_retry_on_18 --fail --silent --location -o $build_dir/.heroku/composer.tar.gz "${s3_url}composer-1.8.0.tar.gz" || {
 	mcount "failures.bootstrap.download.composer"

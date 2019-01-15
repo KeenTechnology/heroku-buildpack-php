@@ -232,7 +232,7 @@ rm $build_dir/.heroku/php.tar.gz
 
 # Compile and nstall datadog tracer agent
 mkdir $build_dir/dd-trace
-cd $build_dir/dd-tracedd-trace
+cd $build_dir/dd-trace
 curl -L https://github.com/DataDog/dd-trace-php/archive/v0.2.5.tar.gz | tar x --strip-components=1
 phpize # generate files needed to build PHP extension
 ./configure

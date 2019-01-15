@@ -217,7 +217,7 @@ fi
 mkdir -p $build_dir/.heroku/php
 ln -s $build_dir/.heroku/php /app/.heroku/php
 
-curl_retry_on_18 --fail --silent --location -o $build_dir/.heroku/php.tar.gz "${s3_url}php-7.1.26.tar.gz" || {
+curl_retry_on_18 --fail --silent --location -o $build_dir/.heroku/php.tar.gz "${s3_url}php-7.3.0.tar.gz" || {
 	mcount "failures.bootstrap.download.php"
 	error <<-EOF
 		Failed to download minimal PHP for bootstrapping!
